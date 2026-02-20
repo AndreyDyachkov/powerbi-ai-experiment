@@ -1,0 +1,130 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4b1a89bd13b8bb0c1158",
+  "position": {
+    "x": 793.579928565206,
+    "y": 298.306124226849,
+    "z": 6,
+    "height": 395.36266225280946,
+    "width": 449.60013938496382,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Low Risk Customers"
+                }
+              },
+              "queryRef": "ChurnMeasures.Low Risk Customers",
+              "nativeQueryRef": "Low Risk Customers"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Medium Risk Customers"
+                }
+              },
+              "queryRef": "ChurnMeasures.Medium Risk Customers",
+              "nativeQueryRef": "Medium Risk Customers"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "High Risk Customers"
+                }
+              },
+              "queryRef": "ChurnMeasures.High Risk Customers",
+              "nativeQueryRef": "High Risk Customers"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Low Risk Customers"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "85af2070494c832fd382",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "High Risk Customers"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "153d9f0ef23ca85279d9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Low Risk Customers"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dee8282124c1344e0b5e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Medium Risk Customers"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

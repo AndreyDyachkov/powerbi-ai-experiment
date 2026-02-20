@@ -1,0 +1,185 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "95f63dc4a220347c327e",
+  "position": {
+    "x": 17.473386205425527,
+    "y": 144.55255860852029,
+    "z": 2,
+    "height": 149.31802757363633,
+    "width": 1210.4291171394775
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Customers with Complaint"
+                }
+              },
+              "queryRef": "ChurnMeasures.Customers with Complaint",
+              "nativeQueryRef": "Customers with Complaint"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Churn Rate Complainers %"
+                }
+              },
+              "queryRef": "ChurnMeasures.Churn Rate Complainers %",
+              "nativeQueryRef": "Churn Rate Complainers %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Customers Autopay"
+                }
+              },
+              "queryRef": "ChurnMeasures.Customers Autopay",
+              "nativeQueryRef": "Customers Autopay"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Customers with Claims"
+                }
+              },
+              "queryRef": "ChurnMeasures.Customers with Claims",
+              "nativeQueryRef": "Customers with Claims"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Churn Rate With Claims %"
+                }
+              },
+              "queryRef": "ChurnMeasures.Churn Rate With Claims %",
+              "nativeQueryRef": "Churn Rate With Claims %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Customers with Complaint"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d17e33f2f72b3d625aeb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Customers with Complaint"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2cd6083815e76392406f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Churn Rate Complainers %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0aa6e58f6ac94b6ea378",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Customers with Claims"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae556cea53d48e297984",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Churn Rate With Claims %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f90711a2c8ea27cf6fff",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Customers Autopay"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

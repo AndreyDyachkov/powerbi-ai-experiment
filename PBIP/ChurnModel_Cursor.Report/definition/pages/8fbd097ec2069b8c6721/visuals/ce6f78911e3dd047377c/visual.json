@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ce6f78911e3dd047377c",
+  "position": {
+    "x": 716.40883442244672,
+    "y": 289.10511721704057,
+    "z": 5,
+    "height": 203.32667584495161,
+    "width": 544.85195167826873
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactChurnSnapshot"
+                    }
+                  },
+                  "Property": "num_claims_12m"
+                }
+              },
+              "queryRef": "FactChurnSnapshot.num_claims_12m",
+              "nativeQueryRef": "Sum of num_claims_12m",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Churn Rate %"
+                }
+              },
+              "queryRef": "ChurnMeasures.Churn Rate %",
+              "nativeQueryRef": "Churn Rate %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Churn Rate %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c6f5a63d9d61154611d8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactChurnSnapshot"
+              }
+            },
+            "Property": "num_claims_12m"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f6446d1a79a9b2959792",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Churn Rate %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

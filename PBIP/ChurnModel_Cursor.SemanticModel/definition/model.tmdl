@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-001
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["FactChurnSnapshot","DimDate","DimRegion","DimPolicyType","DimChurnType","DimCustomer"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactChurnSnapshot
+ref table DimDate
+ref table DimRegion
+ref table DimPolicyType
+ref table DimChurnType
+ref table DimCustomer
+ref table ChurnMeasures
+
+ref cultureInfo en-US
+

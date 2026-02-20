@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f3ab2d351d05eb45b758",
+  "position": {
+    "x": 433.89981705723494,
+    "y": 298.306124226849,
+    "z": 7,
+    "height": 395.36266225280946,
+    "width": 316.861050614165
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimChurnType"
+                    }
+                  },
+                  "Property": "churn_type"
+                }
+              },
+              "queryRef": "DimChurnType.churn_type",
+              "nativeQueryRef": "churn_type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Churn Probability"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Churn Probability",
+              "nativeQueryRef": "Avg Churn Probability"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Avg Churn Probability"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "72f5d09b9452513163c3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimChurnType"
+              }
+            },
+            "Property": "churn_type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "27e554ea5b0132237483",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Churn Probability"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

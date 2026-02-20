@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c627f2d06e5b4fa91d61",
+  "position": {
+    "x": 17.473386205425527,
+    "y": 144.55255860852029,
+    "z": 2000,
+    "height": 149.31802757363633,
+    "width": 1210.4291171394775,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Total Premium"
+                }
+              },
+              "queryRef": "ChurnMeasures.Total Premium",
+              "nativeQueryRef": "Total Premium"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Premium"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Premium",
+              "nativeQueryRef": "Avg Premium"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Churned Premium"
+                }
+              },
+              "queryRef": "ChurnMeasures.Churned Premium",
+              "nativeQueryRef": "Churned Premium"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Premium Change %"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Premium Change %",
+              "nativeQueryRef": "Avg Premium Change %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Tenure months"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Tenure months",
+              "nativeQueryRef": "Avg Tenure months"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Total Premium"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a72c071d53bcd7283fdf",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Total Premium"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9ffa8dfea3c22f27945d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Premium"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9cd8a3d0e71fd89f076d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Churned Premium"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "241ee714997c03356a0d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Premium Change %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "68cdbeaa754aba17882b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Tenure months"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

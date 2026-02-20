@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 874.84592750307729,
+            "y": 107.69663772607068
+          },
+          "nodeIndex": "ChurnMeasures",
+          "nodeLineageTag": "a7000007-0007-0007-0007-000000000007",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 612.45347979803182,
+            "y": 0
+          },
+          "nodeIndex": "DimChurnType",
+          "nodeLineageTag": "a5000005-0005-0005-0005-000000000005",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 601.70907445897183,
+            "y": 412.49386103171025
+          },
+          "nodeIndex": "DimCustomer",
+          "nodeLineageTag": "a6000006-0006-0006-0006-000000000006",
+          "size": {
+            "height": 224.29183982047925,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 16.768318206878064,
+            "y": 0
+          },
+          "nodeIndex": "DimPolicyType",
+          "nodeLineageTag": "a4000004-0004-0004-0004-000000000004",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 12.212693612587813,
+            "y": 440.96272007543553
+          },
+          "nodeIndex": "DimRegion",
+          "nodeLineageTag": "a3000003-0003-0003-0003-000000000003",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 334.16449602081786,
+            "y": 0
+          },
+          "nodeIndex": "FactChurnSnapshot",
+          "nodeLineageTag": "a1000001-0001-0001-0001-000000000001",
+          "size": {
+            "height": 711.864870608827,
+            "width": 234
+          },
+          "zIndex": 6
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 69.152371830514653,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

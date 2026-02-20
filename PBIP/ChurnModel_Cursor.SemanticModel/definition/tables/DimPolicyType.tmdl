@@ -1,0 +1,26 @@
+table DimPolicyType
+	lineageTag: a4000004-0004-0004-0004-000000000004
+
+	column policy_type
+		dataType: string
+		isKey
+		lineageTag: c4000001-0001-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: policy_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPolicyType = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"policy_type", type text}}),
+					#"Selected Columns" = Table.SelectColumns(#"Changed Type",{"policy_type"}),
+					#"Distinct" = Table.Distinct(#"Selected Columns")
+				in
+					#"Distinct"
+
+		annotation PBI_ResultType = Table
+

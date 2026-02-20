@@ -1,0 +1,185 @@
+table ChurnMeasures
+	lineageTag: a7000007-0007-0007-0007-000000000007
+
+	measure 'Total Customers' = COUNTROWS(FactChurnSnapshot)
+		formatString: #,##0
+		lineageTag: m7000001-0001-0001-0001-000000000001
+
+	measure 'Churned Customers' = SUM(FactChurnSnapshot[churn_flag])
+		formatString: #,##0
+		lineageTag: m7000002-0002-0002-0002-000000000002
+
+	measure 'Churn Rate %' = DIVIDE([Churned Customers], [Total Customers], 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000003-0003-0003-0003-000000000003
+
+	measure 'Revenue at Risk' = CALCULATE(SUM(FactChurnSnapshot[current_premium]), FILTER(FactChurnSnapshot, OR(FactChurnSnapshot[churn_flag] = 1, FactChurnSnapshot[churn_probability_true] > 0.3)))
+		formatString: $ #,##0.00
+		lineageTag: m7000004-0004-0004-0004-000000000004
+
+	measure 'Avg Churn Probability' = AVERAGE(FactChurnSnapshot[churn_probability_true])
+		formatString: 0.00%
+		lineageTag: m7000005-0005-0005-0005-000000000005
+
+	measure 'Avg Premium' = AVERAGE(FactChurnSnapshot[current_premium])
+		formatString: $ #,##0.00
+		lineageTag: m7000006-0006-0006-0006-000000000006
+
+	measure 'Avg Tenure months' = AVERAGE(FactChurnSnapshot[customer_tenure_months])
+		formatString: #,##0
+		lineageTag: m7000007-0007-0007-0007-000000000007
+
+	measure 'High Risk Customers' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[churn_probability_true] > 0.3))
+		formatString: #,##0
+		lineageTag: m7000008-0008-0008-0008-000000000008
+
+	measure 'High Risk %' = DIVIDE([High Risk Customers], [Total Customers], 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000009-0009-0009-0009-000000000009
+
+	measure 'Medium Risk Customers' = COUNTROWS(FILTER(FactChurnSnapshot, AND(FactChurnSnapshot[churn_probability_true] > 0.1, FactChurnSnapshot[churn_probability_true] <= 0.3)))
+		formatString: #,##0
+		lineageTag: m7000010-0010-0010-0010-000000000010
+
+	measure 'Low Risk Customers' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[churn_probability_true] <= 0.1))
+		formatString: #,##0
+		lineageTag: m7000011-0011-0011-0011-000000000011
+
+	measure 'Premium at High Risk' = CALCULATE(SUM(FactChurnSnapshot[current_premium]), FILTER(FactChurnSnapshot, FactChurnSnapshot[churn_probability_true] > 0.3))
+		formatString: $ #,##0.00
+		lineageTag: m7000012-0012-0012-0012-000000000012
+
+	measure 'Max Churn Probability' = MAX(FactChurnSnapshot[churn_probability_true])
+		formatString: 0.00%
+		lineageTag: m7000013-0013-0013-0013-000000000013
+
+	measure 'Customers with Complaint' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[complaint_flag] = 1))
+		formatString: #,##0
+		lineageTag: m7000014-0014-0014-0014-000000000014
+
+	measure 'Churned with Complaint' = CALCULATE(SUM(FactChurnSnapshot[churn_flag]), FILTER(FactChurnSnapshot, FactChurnSnapshot[complaint_flag] = 1))
+		formatString: #,##0
+		lineageTag: m7000015-0015-0015-0015-000000000015
+
+	measure 'Churn Rate Complainers %' = DIVIDE([Churned with Complaint], [Customers with Complaint], 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000016-0016-0016-0016-000000000016
+
+	measure 'Customers Autopay' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[autopay_enabled] = 1))
+		formatString: #,##0
+		lineageTag: m7000017-0017-0017-0017-000000000017
+
+	measure 'Customers with Missed Payment' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[missed_payment_flag] = 1))
+		formatString: #,##0
+		lineageTag: m7000018-0018-0018-0018-000000000018
+
+	measure 'Avg Contacts 12m' = AVERAGE(FactChurnSnapshot[num_contacts_12m])
+		formatString: #,##0.00
+		lineageTag: m7000019-0019-0019-0019-000000000019
+
+	measure 'Total Claims 12m' = SUM(FactChurnSnapshot[num_claims_12m])
+		formatString: #,##0
+		lineageTag: m7000020-0020-0020-0020-000000000020
+
+	measure 'Customers with Claims' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[num_claims_12m] > 0))
+		formatString: #,##0
+		lineageTag: m7000021-0021-0021-0021-000000000021
+
+	measure 'Avg Claim Amount' = AVERAGE(FactChurnSnapshot[avg_claim_amount])
+		formatString: $ #,##0.00
+		lineageTag: m7000022-0022-0022-0022-000000000022
+
+	measure 'Total Payout 12m' = SUM(FactChurnSnapshot[total_payout_amount_12m])
+		formatString: $ #,##0.00
+		lineageTag: m7000023-0023-0023-0023-000000000023
+
+	measure 'Avg Settlement Days' = AVERAGE(FactChurnSnapshot[avg_settlement_time_days])
+		formatString: #,##0
+		lineageTag: m7000024-0024-0024-0024-000000000024
+
+	measure 'Churned with Claims' = CALCULATE(SUM(FactChurnSnapshot[churn_flag]), FILTER(FactChurnSnapshot, FactChurnSnapshot[num_claims_12m] > 0))
+		formatString: #,##0
+		lineageTag: m7000025-0025-0025-0025-000000000025
+
+	measure 'Churn Rate With Claims %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, FactChurnSnapshot[num_claims_12m] > 0))
+		formatString: 0.00 "%"
+		lineageTag: m7000026-0026-0026-0026-000000000026
+
+	measure 'Total Premium' = SUM(FactChurnSnapshot[current_premium])
+		formatString: $ #,##0.00
+		lineageTag: m7000027-0027-0027-0027-000000000027
+
+	measure 'Avg Premium Change %' = AVERAGE(FactChurnSnapshot[premium_change_pct])
+		formatString: 0.00 "%"
+		lineageTag: m7000028-0028-0028-0028-000000000028
+
+	measure 'Customers with Premium Increase' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[premium_change_pct] > 0))
+		formatString: #,##0
+		lineageTag: m7000029-0029-0029-0029-000000000029
+
+	measure 'Churn Rate Premium Increase %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, FactChurnSnapshot[premium_change_pct] > 0))
+		formatString: 0.00 "%"
+		lineageTag: m7000030-0030-0030-0030-000000000030
+
+	measure 'Churn Rate No Premium Increase %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, FactChurnSnapshot[premium_change_pct] <= 0))
+		formatString: 0.00 "%"
+		lineageTag: m7000039-0039-0039-0039-000000000039
+
+	measure 'Customers No Premium Increase' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[premium_change_pct] <= 0))
+		formatString: #,##0
+		lineageTag: m7000040-0040-0040-0040-000000000040
+
+	measure 'Churned Premium' = CALCULATE(SUM(FactChurnSnapshot[current_premium]), FILTER(FactChurnSnapshot, FactChurnSnapshot[churn_flag] = 1))
+		formatString: $ #,##0.00
+		lineageTag: m7000031-0031-0031-0031-000000000031
+
+	measure 'Short Tenure Customers' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[customer_tenure_months] < 12))
+		formatString: #,##0
+		lineageTag: m7000032-0032-0032-0032-000000000032
+
+	measure 'Medium Tenure Customers' = COUNTROWS(FILTER(FactChurnSnapshot, AND(FactChurnSnapshot[customer_tenure_months] >= 12, FactChurnSnapshot[customer_tenure_months] <= 36)))
+		formatString: #,##0
+		lineageTag: m7000033-0033-0033-0033-000000000033
+
+	measure 'Long Tenure Customers' = COUNTROWS(FILTER(FactChurnSnapshot, FactChurnSnapshot[customer_tenure_months] > 36))
+		formatString: #,##0
+		lineageTag: m7000034-0034-0034-0034-000000000034
+
+	measure 'Churn Rate Short Tenure %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, FactChurnSnapshot[customer_tenure_months] < 12))
+		formatString: 0.00 "%"
+		lineageTag: m7000035-0035-0035-0035-000000000035
+
+	measure 'Churn Rate Medium Tenure %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, AND(FactChurnSnapshot[customer_tenure_months] >= 12, FactChurnSnapshot[customer_tenure_months] <= 36)))
+		formatString: 0.00 "%"
+		lineageTag: m7000036-0036-0036-0036-000000000036
+
+	measure 'Churn Rate Long Tenure %' = CALCULATE([Churn Rate %], FILTER(FactChurnSnapshot, FactChurnSnapshot[customer_tenure_months] > 36))
+		formatString: 0.00 "%"
+		lineageTag: m7000037-0037-0037-0037-000000000037
+
+	measure 'Avg Premium to Coverage Ratio' = AVERAGE(FactChurnSnapshot[premium_to_coverage_ratio])
+		formatString: #,##0.0000
+		lineageTag: m7000038-0038-0038-0038-000000000038
+
+	measure 'Customers % of Total' = DIVIDE([Total Customers], CALCULATE([Total Customers], ALL(DimRegion[region_name]), ALL(DimPolicyType[policy_type]), ALL(FactChurnSnapshot[age_band])), 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000041-0041-0041-0041-000000000041
+
+	measure 'Churned % of Total Churned' = DIVIDE([Churned Customers], CALCULATE([Churned Customers], ALL(DimRegion[region_name]), ALL(DimPolicyType[policy_type]), ALL(FactChurnSnapshot[age_band])), 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000042-0042-0042-0042-000000000042
+
+	measure 'Premium % of Total Premium' = DIVIDE(SUM(FactChurnSnapshot[current_premium]), CALCULATE(SUM(FactChurnSnapshot[current_premium]), ALL(DimRegion[region_name]), ALL(DimPolicyType[policy_type]), ALL(FactChurnSnapshot[age_band])), 0) * 100
+		formatString: 0.00 "%"
+		lineageTag: m7000043-0043-0043-0043-000000000043
+
+	column Placeholder
+		isHidden
+		lineageTag: 30784b2f-1231-45e4-930c-89305aa9a65b
+		isNameInferred
+		sourceColumn: [Placeholder]
+
+	partition ChurnMeasures = calculated
+		mode: import
+		source = ROW("Placeholder", BLANK())
+

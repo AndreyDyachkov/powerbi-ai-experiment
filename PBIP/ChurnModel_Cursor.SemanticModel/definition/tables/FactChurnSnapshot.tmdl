@@ -1,0 +1,569 @@
+table FactChurnSnapshot
+	lineageTag: a1000001-0001-0001-0001-000000000001
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000001-0001-0001-0001-000000000001
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c1000002-0002-0002-0002-000000000002
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		variation Variation
+			isDefault
+			relationship: d1ccc782-4a81-430c-b5f7-1a64e1abe979
+			defaultHierarchy: DimDate.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column region_name
+		dataType: string
+		isHidden
+		lineageTag: c1000003-0003-0003-0003-000000000003
+		summarizeBy: none
+		sourceColumn: region_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000004-0004-0004-0004-000000000004
+		summarizeBy: average
+		sourceColumn: age
+
+		annotation SummarizationSetBy = User
+
+	column age_band
+		dataType: string
+		lineageTag: c1000005-0005-0005-0005-000000000005
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital_status
+		dataType: string
+		lineageTag: c1000006-0006-0006-0006-000000000006
+		summarizeBy: none
+		sourceColumn: marital_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_tenure_months
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000007-0007-0007-0007-000000000007
+		summarizeBy: average
+		sourceColumn: customer_tenure_months
+
+		annotation SummarizationSetBy = User
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"FactChurnSnapshot","TableItemName":"customer_tenure_months (groups)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column multi_policy_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000008-0008-0008-0008-000000000008
+		summarizeBy: sum
+		sourceColumn: multi_policy_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_policies
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000009-0009-0009-0009-000000000009
+		summarizeBy: sum
+		sourceColumn: num_policies
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_type
+		dataType: string
+		isHidden
+		lineageTag: c1000010-0010-0010-0010-000000000010
+		summarizeBy: none
+		sourceColumn: policy_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column renewal_month
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000011-0011-0011-0011-000000000011
+		summarizeBy: sum
+		sourceColumn: renewal_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_premium
+		dataType: double
+		lineageTag: c1000012-0012-0012-0012-000000000012
+		summarizeBy: sum
+		sourceColumn: current_premium
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column premium_last_year
+		dataType: double
+		lineageTag: c1000013-0013-0013-0013-000000000013
+		summarizeBy: sum
+		sourceColumn: premium_last_year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column premium_change_pct
+		dataType: double
+		lineageTag: c1000014-0014-0014-0014-000000000014
+		summarizeBy: average
+		sourceColumn: premium_change_pct
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"FactChurnSnapshot","TableItemName":"premium_change_pct (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column num_price_increases_last_3y
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000015-0015-0015-0015-000000000015
+		summarizeBy: sum
+		sourceColumn: num_price_increases_last_3y
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_amount
+		dataType: double
+		lineageTag: c1000016-0016-0016-0016-000000000016
+		summarizeBy: sum
+		sourceColumn: coverage_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column premium_to_coverage_ratio
+		dataType: double
+		lineageTag: c1000017-0017-0017-0017-000000000017
+		summarizeBy: sum
+		sourceColumn: premium_to_coverage_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payment_frequency
+		dataType: string
+		lineageTag: c1000018-0018-0018-0018-000000000018
+		summarizeBy: none
+		sourceColumn: payment_frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column autopay_enabled
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000019-0019-0019-0019-000000000019
+		summarizeBy: sum
+		sourceColumn: autopay_enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_payment_count_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000020-0020-0020-0020-000000000020
+		summarizeBy: sum
+		sourceColumn: late_payment_count_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column missed_payment_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000021-0021-0021-0021-000000000021
+		summarizeBy: sum
+		sourceColumn: missed_payment_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_method_change_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000022-0022-0022-0022-000000000022
+		summarizeBy: sum
+		sourceColumn: payment_method_change_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_claims_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000023-0023-0023-0023-000000000023
+		summarizeBy: sum
+		sourceColumn: num_claims_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_approved_claims_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000024-0024-0024-0024-000000000024
+		summarizeBy: sum
+		sourceColumn: num_approved_claims_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_rejected_claims_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000025-0025-0025-0025-000000000025
+		summarizeBy: sum
+		sourceColumn: num_rejected_claims_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_pending_claims_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000026-0026-0026-0026-000000000026
+		summarizeBy: sum
+		sourceColumn: num_pending_claims_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_claim_amount
+		dataType: double
+		lineageTag: c1000027-0027-0027-0027-000000000027
+		summarizeBy: sum
+		sourceColumn: avg_claim_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_claim_amount_12m
+		dataType: double
+		lineageTag: c1000028-0028-0028-0028-000000000028
+		summarizeBy: sum
+		sourceColumn: total_claim_amount_12m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_payout_amount_12m
+		dataType: double
+		lineageTag: c1000029-0029-0029-0029-000000000029
+		summarizeBy: sum
+		sourceColumn: total_payout_amount_12m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payout_ratio_12m
+		dataType: double
+		lineageTag: c1000030-0030-0030-0030-000000000030
+		summarizeBy: sum
+		sourceColumn: payout_ratio_12m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_settlement_time_days
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000031-0031-0031-0031-000000000031
+		summarizeBy: sum
+		sourceColumn: avg_settlement_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_last_claim
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000032-0032-0032-0032-000000000032
+		summarizeBy: sum
+		sourceColumn: days_since_last_claim
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_contacts_12m
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000033-0033-0033-0033-000000000033
+		summarizeBy: sum
+		sourceColumn: num_contacts_12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column complaint_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000034-0034-0034-0034-000000000034
+		summarizeBy: sum
+		sourceColumn: complaint_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column complaint_resolution_days
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000035-0035-0035-0035-000000000035
+		summarizeBy: sum
+		sourceColumn: complaint_resolution_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column quote_requested_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000036-0036-0036-0036-000000000036
+		summarizeBy: sum
+		sourceColumn: quote_requested_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_downgrade_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000037-0037-0037-0037-000000000037
+		summarizeBy: sum
+		sourceColumn: coverage_downgrade_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1000038-0038-0038-0038-000000000038
+		summarizeBy: sum
+		sourceColumn: churn_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_type
+		dataType: string
+		isHidden
+		lineageTag: c1000039-0039-0039-0039-000000000039
+		summarizeBy: none
+		sourceColumn: churn_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_probability_true
+		dataType: double
+		lineageTag: c1000040-0040-0040-0040-000000000040
+		summarizeBy: sum
+		sourceColumn: churn_probability_true
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"FactChurnSnapshot","TableItemName":"churn_probability_true (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'churn_probability_true (bins)' = ```
+			VAR __Count = 42
+			
+			VAR __Min = MIN('FactChurnSnapshot'[churn_probability_true])
+			
+			VAR __Max = MAX('FactChurnSnapshot'[churn_probability_true])
+			
+			VAR __Difference = (__Max - __Min)
+			
+			VAR __Size = IF(__Difference > 0, __Difference / __Count, 1)
+			
+			VAR __BinNumber = 
+				IF(
+					ISBLANK('FactChurnSnapshot'[churn_probability_true]),
+					BLANK(),
+					ROUNDDOWN(('FactChurnSnapshot'[churn_probability_true] - __Min) / __Size, 0)
+				)
+			
+			RETURN
+				IF(
+					ISBLANK('FactChurnSnapshot'[churn_probability_true]),
+					BLANK(),
+					__Min + (MIN(__BinNumber, __Count - 1) * __Size)
+				)
+			```
+		lineageTag: 0fcc8f53-db6c-42cf-9b3f-de95bdc040fc
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "FactChurnSnapshot"
+				          }
+				        },
+				        "Property": "churn_probability_true"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"f","Entity":"FactChurnSnapshot"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"churn_probability_true"}}],"BinItem":{"Expression":{"Member":{"Expression":{"Discretize":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"churn_probability_true"}},"Count":42}},"Member":"Min"}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'customer_tenure_months (groups)' =
+			SWITCH(
+				TRUE,
+				ISBLANK('FactChurnSnapshot'[customer_tenure_months]),
+				"(Blank)",
+				'FactChurnSnapshot'[customer_tenure_months] IN {1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12},
+				"0-12",
+				'FactChurnSnapshot'[customer_tenure_months] IN {13,
+					14,
+					15,
+					16,
+					17,
+					18,
+					19,
+					20,
+					21,
+					22,
+					23,
+					24},
+				"13-24",
+				'FactChurnSnapshot'[customer_tenure_months] IN {25,
+					26,
+					27,
+					28,
+					29,
+					30,
+					31,
+					32,
+					33,
+					34,
+					35,
+					36},
+				"25-36",
+				"37+"
+			)
+		formatString: 0
+		lineageTag: 072acdf9-a1b4-4ca0-a4ab-22488f3d1984
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "FactChurnSnapshot"
+				          }
+				        },
+				        "Property": "customer_tenure_months"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"f","Entity":"FactChurnSnapshot"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"customer_tenure_months"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"0-12","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"customer_tenure_months"}}],"Values":[[{"Literal":{"Value":"1L"}}],[{"Literal":{"Value":"2L"}}],[{"Literal":{"Value":"3L"}}],[{"Literal":{"Value":"4L"}}],[{"Literal":{"Value":"5L"}}],[{"Literal":{"Value":"6L"}}],[{"Literal":{"Value":"7L"}}],[{"Literal":{"Value":"8L"}}],[{"Literal":{"Value":"9L"}}],[{"Literal":{"Value":"10L"}}],[{"Literal":{"Value":"11L"}}],[{"Literal":{"Value":"12L"}}]]}}},{"DisplayName":"13-24","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"customer_tenure_months"}}],"Values":[[{"Literal":{"Value":"13L"}}],[{"Literal":{"Value":"14L"}}],[{"Literal":{"Value":"15L"}}],[{"Literal":{"Value":"16L"}}],[{"Literal":{"Value":"17L"}}],[{"Literal":{"Value":"18L"}}],[{"Literal":{"Value":"19L"}}],[{"Literal":{"Value":"20L"}}],[{"Literal":{"Value":"21L"}}],[{"Literal":{"Value":"22L"}}],[{"Literal":{"Value":"23L"}}],[{"Literal":{"Value":"24L"}}]]}}},{"DisplayName":"25-36","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"customer_tenure_months"}}],"Values":[[{"Literal":{"Value":"25L"}}],[{"Literal":{"Value":"26L"}}],[{"Literal":{"Value":"27L"}}],[{"Literal":{"Value":"28L"}}],[{"Literal":{"Value":"29L"}}],[{"Literal":{"Value":"30L"}}],[{"Literal":{"Value":"31L"}}],[{"Literal":{"Value":"32L"}}],[{"Literal":{"Value":"33L"}}],[{"Literal":{"Value":"34L"}}],[{"Literal":{"Value":"35L"}}],[{"Literal":{"Value":"36L"}}]]}}},{"DisplayName":"37+"}]}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'premium_change_pct (bins)' = ```
+			VAR __Count = 10
+			
+			VAR __Min = MIN('FactChurnSnapshot'[premium_change_pct])
+			
+			VAR __Max = MAX('FactChurnSnapshot'[premium_change_pct])
+			
+			VAR __Difference = (__Max - __Min)
+			
+			VAR __Size = IF(__Difference > 0, __Difference / __Count, 1)
+			
+			VAR __BinNumber = 
+				IF(
+					ISBLANK('FactChurnSnapshot'[premium_change_pct]),
+					BLANK(),
+					ROUNDDOWN(('FactChurnSnapshot'[premium_change_pct] - __Min) / __Size, 0)
+				)
+			
+			RETURN
+				IF(
+					ISBLANK('FactChurnSnapshot'[premium_change_pct]),
+					BLANK(),
+					__Min + (MIN(__BinNumber, __Count - 1) * __Size)
+				)
+			```
+		lineageTag: 72db5a48-ab93-46a6-9bf5-f02b34d13554
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "FactChurnSnapshot"
+				          }
+				        },
+				        "Property": "premium_change_pct"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"f","Entity":"FactChurnSnapshot"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"premium_change_pct"}}],"BinItem":{"Expression":{"Member":{"Expression":{"Discretize":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"premium_change_pct"}},"Count":10}},"Member":"Min"}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactChurnSnapshot = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"as_of_date", type date}, {"region_name", type text}, {"age", Int64.Type}, {"age_band", type text}, {"marital_status", type text}, {"customer_tenure_months", Int64.Type}, {"multi_policy_flag", Int64.Type}, {"num_policies", Int64.Type}, {"policy_type", type text}, {"renewal_month", Int64.Type}, {"current_premium", type number}, {"premium_last_year", type number}, {"premium_change_pct", type number}, {"num_price_increases_last_3y", Int64.Type}, {"coverage_amount", type number}, {"premium_to_coverage_ratio", type number}, {"payment_frequency", type text}, {"autopay_enabled", Int64.Type}, {"late_payment_count_12m", Int64.Type}, {"missed_payment_flag", Int64.Type}, {"payment_method_change_flag", Int64.Type}, {"num_claims_12m", Int64.Type}, {"num_approved_claims_12m", Int64.Type}, {"num_rejected_claims_12m", Int64.Type}, {"num_pending_claims_12m", Int64.Type}, {"avg_claim_amount", type number}, {"total_claim_amount_12m", type number}, {"total_payout_amount_12m", type number}, {"payout_ratio_12m", type number}, {"avg_settlement_time_days", Int64.Type}, {"days_since_last_claim", Int64.Type}, {"num_contacts_12m", Int64.Type}, {"complaint_flag", Int64.Type}, {"complaint_resolution_days", Int64.Type}, {"quote_requested_flag", Int64.Type}, {"coverage_downgrade_flag", Int64.Type}, {"churn_flag", Int64.Type}, {"churn_type", type text}, {"churn_probability_true", type number}}),
+					#"Replaced Null ChurnType" = Table.ReplaceValue(#"Changed Type",null,"No Churn",Replacer.ReplaceValue,{"churn_type"})
+				in
+					#"Replaced Null ChurnType"
+
+		annotation PBI_ResultType = Table
+

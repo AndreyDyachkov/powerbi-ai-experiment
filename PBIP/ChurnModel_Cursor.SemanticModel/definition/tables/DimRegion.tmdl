@@ -1,0 +1,33 @@
+table DimRegion
+	lineageTag: a3000003-0003-0003-0003-000000000003
+
+	column region_name
+		dataType: string
+		isKey
+		lineageTag: c3000001-0001-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: region_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_name_nz = [region_name] & ", NZ"
+		dataType: string
+		lineageTag: c3000002-0002-0002-0002-000000000002
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimRegion = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"region_name", type text}}),
+					#"Selected Columns" = Table.SelectColumns(#"Changed Type",{"region_name"}),
+					#"Distinct" = Table.Distinct(#"Selected Columns")
+				in
+					#"Distinct"
+
+		annotation PBI_ResultType = Table
+

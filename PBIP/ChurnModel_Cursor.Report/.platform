@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ChurnModel_Cursor"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e1637638-0db3-468c-8c82-fefd43785d71"
+  }
+}

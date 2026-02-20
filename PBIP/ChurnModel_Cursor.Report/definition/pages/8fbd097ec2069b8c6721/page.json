@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "8fbd097ec2069b8c6721",
+  "displayName": "Engagement & claims",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

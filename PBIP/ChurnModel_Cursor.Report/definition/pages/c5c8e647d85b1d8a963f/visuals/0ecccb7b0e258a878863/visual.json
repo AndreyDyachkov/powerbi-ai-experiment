@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0ecccb7b0e258a878863",
+  "position": {
+    "x": 350.50848800586334,
+    "y": 293.7131311530614,
+    "z": 2004,
+    "height": 202.84056018857834,
+    "width": 426.77653863676881,
+    "tabOrder": 4002
+  },
+  "visual": {
+    "visualType": "stackedAreaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "GroupRef": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactChurnSnapshot"
+                    }
+                  },
+                  "Property": "customer_tenure_months (groups)",
+                  "GroupedColumns": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "FactChurnSnapshot"
+                          }
+                        },
+                        "Property": "customer_tenure_months"
+                      }
+                    }
+                  ]
+                }
+              },
+              "queryRef": "FactChurnSnapshot.customer_tenure_months (groups)",
+              "nativeQueryRef": "customer_tenure_months (groups)",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Churn Rate %"
+                }
+              },
+              "queryRef": "ChurnMeasures.Churn Rate %",
+              "nativeQueryRef": "Churn Rate %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Churn Rate %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f8eb5e442f3614897078",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Churn Rate %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "450f305a031214511e3d",
+        "field": {
+          "GroupRef": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactChurnSnapshot"
+              }
+            },
+            "Property": "customer_tenure_months (groups)",
+            "GroupedColumns": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactChurnSnapshot"
+                    }
+                  },
+                  "Property": "customer_tenure_months"
+                }
+              }
+            ]
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+table DimDate
+	showAsVariationsOnly
+	lineageTag: a2000002-0002-0002-0002-000000000002
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: c2000001-0001-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c2000002-0002-0002-0002-000000000002
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column MonthNo
+		dataType: int64
+		formatString: 0
+		lineageTag: c2000003-0003-0003-0003-000000000003
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+		annotation SummarizationSetBy = User
+
+	column Month
+		dataType: string
+		lineageTag: c2000004-0004-0004-0004-000000000004
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterNo
+		dataType: int64
+		formatString: 0
+		lineageTag: c2000005-0005-0005-0005-000000000005
+		summarizeBy: none
+		sourceColumn: QuarterNo
+
+		annotation SummarizationSetBy = User
+
+	column Quarter
+		dataType: string
+		lineageTag: c2000006-0006-0006-0006-000000000006
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: QuarterNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: c2000007-0007-0007-0007-000000000007
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = User
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: h2000001-0001-0001-0001-000000000001
+
+		level Year
+			lineageTag: l2000001-0001-0001-0001-000000000001
+			column: Year
+
+		level Quarter
+			lineageTag: l2000002-0002-0002-0002-000000000002
+			column: Quarter
+
+		level Month
+			lineageTag: l2000003-0003-0003-0003-000000000003
+			column: Month
+
+		level Day
+			lineageTag: l2000004-0004-0004-0004-000000000004
+			column: Day
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"as_of_date", type date}}),
+					#"Selected Columns" = Table.SelectColumns(#"Changed Type",{"as_of_date"}),
+					#"Distinct Dates" = Table.Distinct(#"Selected Columns"),
+					#"Renamed" = Table.RenameColumns(#"Distinct Dates",{{"as_of_date","Date"}}),
+					#"Added Year" = Table.AddColumn(#"Renamed", "Year", each Date.Year([Date]), Int64.Type),
+					#"Added MonthNo" = Table.AddColumn(#"Added Year", "MonthNo", each Date.Month([Date]), Int64.Type),
+					#"Added Month" = Table.AddColumn(#"Added MonthNo", "Month", each Date.MonthName([Date]), type text),
+					#"Added QuarterNo" = Table.AddColumn(#"Added Month", "QuarterNo", each Date.QuarterOfYear([Date]), Int64.Type),
+					#"Added Quarter" = Table.AddColumn(#"Added QuarterNo", "Quarter", each "Qtr " & Text.From([QuarterNo]), type text),
+					#"Added Day" = Table.AddColumn(#"Added Quarter", "Day", each Date.Day([Date]), Int64.Type)
+				in
+					#"Added Day"
+
+		annotation PBI_ResultType = Table
+

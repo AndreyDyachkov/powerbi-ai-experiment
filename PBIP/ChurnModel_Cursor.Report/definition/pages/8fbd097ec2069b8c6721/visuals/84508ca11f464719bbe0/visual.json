@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "84508ca11f464719bbe0",
+  "position": {
+    "x": 17.473386205425527,
+    "y": 492.43179306199215,
+    "z": 6,
+    "height": 204.91516549999028,
+    "width": 673.51961373640222
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimRegion"
+                    }
+                  },
+                  "Property": "region_name"
+                }
+              },
+              "queryRef": "DimRegion.region_name",
+              "nativeQueryRef": "region_name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Claim Amount"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Claim Amount",
+              "nativeQueryRef": "Avg Claim Amount"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Total Payout 12m"
+                }
+              },
+              "queryRef": "ChurnMeasures.Total Payout 12m",
+              "nativeQueryRef": "Total Payout 12m"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Avg Settlement Days"
+                }
+              },
+              "queryRef": "ChurnMeasures.Avg Settlement Days",
+              "nativeQueryRef": "Avg Settlement Days"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChurnMeasures"
+                    }
+                  },
+                  "Property": "Total Claims 12m"
+                }
+              },
+              "queryRef": "ChurnMeasures.Total Claims 12m",
+              "nativeQueryRef": "Total Claims 12m"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ChurnMeasures"
+                  }
+                },
+                "Property": "Avg Claim Amount"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0c1d086c173cdc28bd42",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimRegion"
+              }
+            },
+            "Property": "region_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c8e3734515838f61b74d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Claim Amount"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6ec9315e15d2087bfab9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Total Payout 12m"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5f4ca232f82d2f2005e5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Avg Settlement Days"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0e2818f6b6132a156d9d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ChurnMeasures"
+              }
+            },
+            "Property": "Total Claims 12m"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+table DimChurnType
+	lineageTag: a5000005-0005-0005-0005-000000000005
+
+	column churn_type
+		dataType: string
+		isKey
+		lineageTag: c5000001-0001-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: churn_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimChurnType = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"churn_type", type text}}),
+					#"Selected Columns" = Table.SelectColumns(#"Changed Type",{"churn_type"}),
+					#"Replaced Nulls" = Table.ReplaceValue(#"Selected Columns",null,"No Churn",Replacer.ReplaceValue,{"churn_type"}),
+					#"Distinct" = Table.Distinct(#"Replaced Nulls")
+				in
+					#"Distinct"
+
+		annotation PBI_ResultType = Table
+

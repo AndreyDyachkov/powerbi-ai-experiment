@@ -1,0 +1,21 @@
+relationship d1ccc782-4a81-430c-b5f7-1a64e1abe979
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactChurnSnapshot.as_of_date
+	toColumn: DimDate.Date
+
+relationship e2ddd893-5b92-531d-c6a8-2b75fc2bc08a
+	fromColumn: FactChurnSnapshot.region_name
+	toColumn: DimRegion.region_name
+
+relationship f3eee9a4-6ca3-642e-d7b9-3c86ad3cd19b
+	fromColumn: FactChurnSnapshot.policy_type
+	toColumn: DimPolicyType.policy_type
+
+relationship a4fff0b5-7db4-753f-e8c0-4d97be4de20c
+	fromColumn: FactChurnSnapshot.churn_type
+	toColumn: DimChurnType.churn_type
+
+relationship b50001c6-8ec5-864a-f9d1-5e08af5ef31d
+	fromColumn: FactChurnSnapshot.customer_id
+	toColumn: DimCustomer.customer_id
+

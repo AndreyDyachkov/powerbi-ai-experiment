@@ -1,0 +1,61 @@
+table DimCustomer
+	lineageTag: a6000006-0006-0006-0006-000000000006
+
+	column customer_id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: c6000001-0001-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_name
+		dataType: string
+		lineageTag: c6000002-0002-0002-0002-000000000002
+		summarizeBy: none
+		sourceColumn: region_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_band
+		dataType: string
+		lineageTag: c6000003-0003-0003-0003-000000000003
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital_status
+		dataType: string
+		lineageTag: c6000004-0004-0004-0004-000000000004
+		summarizeBy: none
+		sourceColumn: marital_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: c6000005-0005-0005-0005-000000000005
+		summarizeBy: average
+		sourceColumn: age
+
+		annotation SummarizationSetBy = User
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents("C:\Users\Andrew\OneDrive\Documents\portfolio\PowerBI-MCP_experiment\data\insurance_policyholder_churn_synthetic.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"as_of_date", type date}, {"region_name", type text}, {"age_band", type text}, {"marital_status", type text}, {"age", Int64.Type}}),
+					#"Sorted" = Table.Sort(#"Changed Type",{{"as_of_date", Order.Descending}}),
+					#"Distinct Customers" = Table.Distinct(#"Sorted", {"customer_id"}),
+					#"Selected Columns" = Table.SelectColumns(#"Distinct Customers",{"customer_id", "region_name", "age_band", "marital_status", "age"})
+				in
+					#"Selected Columns"
+
+		annotation PBI_ResultType = Table
+
